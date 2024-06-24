@@ -1,2 +1,5 @@
 # NumpyNN
-Rather standard project implementing neural network using only numpy
+Implementation of hand-written digits classifier basing on MNIST dataset.
+
+Uses pure numpy, without any ML libraries.
+Also pandas is needed to load the data
