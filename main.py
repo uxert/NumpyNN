@@ -1,4 +1,3 @@
-import numpy
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -40,6 +39,37 @@ def init_params(in_layer, hid_layer, out_layer):
     return W1, B1, W2, B2
 
 
+def relu(x):
+    # uses np.maximum to operate on the whole array at once
+    return np.maximum(0, x)
+
+
+def drelu(x):
+    return np.choose(x <= 0, [1, 0])
+
+
+def softmax(x):
+    my_sum = np.sum(np.exp(x))
+    return np.exp(x) / my_sum
+
+
+def forward(X, W1, B1, W2, B2):
+    L1 = W1 @ X + B1  # hid X in @ in X 1 = hid x 1
+    A1 = relu(L1)
+    L2 = W2 @ A1 + B2  # out X hid @ hid X 1 = out X 1
+    A2 = softmax(L2)
+    return A2
+
+
+def one_hot(y, count):
+    """
+    :return: y encoded as one_hot with size of (1, count)
+    """
+    arr = np.zeros(shape=(1, count), dtype=np.uint8)
+    arr[y] = 1
+    return arr
+
+
 def main():
     train_data, test_data = read_input_data()
     X_train = train_data[:, 1:]
@@ -54,6 +84,6 @@ def main():
     W1, B1, W2, B2 = init_params(INPUT_FEATURES_AMOUNT, hidden_layer_count, OUTPUT_LAYER_COUNT)
 
 
-
 if __name__ == "__main__":
     main()
+
