@@ -1,5 +1,8 @@
-# NumpyNN
-Implementation of hand-written digits classifier basing on MNIST dataset.
+# Just numpy NN
+Pure numpy mplementation of hand-written digits classifier. 
+Simple one hidden layer MLP done mainly for educational purposes and to learn how neural networks work on a lower level.
 
-Uses pure numpy, without any ML libraries.
-Also pandas is needed to load the data
+No ML libraries, just array operations.\
+Dataset consists of 70 000 examples from MNIST database.
+
+This network currently achieves over 90% accuracy on test data.
